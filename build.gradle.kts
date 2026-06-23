@@ -20,6 +20,7 @@ dependencies {
     implementation("org.springframework:spring-context:${springVersion}")
     testImplementation("org.springframework:spring-test:${springVersion}")
 
+    implementation("org.aspectj:aspectjweaver:1.9.22")
 
     testImplementation(platform("org.junit:junit-bom:6.1.0"))
     testImplementation("org.junit.jupiter:junit-jupiter-api")
