@@ -58,6 +58,3 @@
 ## ApplicationContext은 싱글톤이다.
 - test1() -> contextObject = null, context = GenericApplicationContext@3225 
 - test2() -> contextObject = GenericApplicationContext@3225, context = GenericApplicationContext@3225
-## ApplicationContext은 싱글톤이다.
-- test1() -> contextObject = null, context = GenericApplicationContext@3225
-- test2() -> contextObject = GenericApplicationContext@3225, context = GenericApplicationContext@3225
