@@ -1,0 +1,33 @@
+plugins {
+    id("java")
+}
+
+group = "won"
+version = "1.0-SNAPSHOT"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+val springVersion = "7.0.0"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation("org.springframework:spring-context:${springVersion}")
+    testImplementation("org.springframework:spring-test:${springVersion}")
+
+
+    testImplementation(platform("org.junit:junit-bom:6.1.0"))
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+}
+
+tasks.test {
+    useJUnitPlatform()
+}
