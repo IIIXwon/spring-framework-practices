@@ -163,3 +163,9 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 > * `List`, `Set`, `Map`, `Properties` 등의 컬렉션 타입도 외부(XML 등)에서 통째로 값을 주입받을 수 있다.
 > * 컬렉션 내부에 여러 가지 타입의 오브젝트가 무분별하게 혼용되면 런타임에 타입 변환 에러가 발생할 수 있다.
 > * 안정성을 위해 가능한 한 **타입 가이드라인(Generic)**를 명시하여 스프링 컨테이너가 적합한 타입 변환기를 올바르게 적용할 수 있도록 설계해야 한다.
+
+## autoRegisteredBean
+> * ApplicationContext 객체를 생성 하면 자동으로 등록되는 빈들이 있다, ApplicationContext 구현체에 빈 후처리기 내장 유무에 따라 등록되는 빈의 목록이 다르다, Resolvable Dependencies, 컨테이너 내부 환경 싱글톤 객체들은 공통으로 생성된다
+> * Resolvable Dependencies은 빈 이름을 가지고 있지 않아서 ac.getBean("빈 이름")으로 사용할수 없지만, 스프링 컨테이너에서 DI를 받아 사용할 수 있다
+> * SystemProperties는 JVM이 가지는 속성, SystemEnvironment는 OS의 환경변수를 가리킨다
+> * SystemEnvironment의 타입이 Map<String, Object>이 아니라, Map인 이유 : 하위 호환성과 컨테이너에 등록된 특정 타입의 빈을 컬렉션에 담아 달라는 다중 빈 주입 메커니즘 떄문에 관례적으로 Map을 선언한다 
