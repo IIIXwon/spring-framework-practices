@@ -122,3 +122,8 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 > 먼저 한정자 이름을 확인 하고 매칭되지 않는다면, 빈 이름을 확인한다
 ## atInject
 > @Inject는 JSR-330에 정의된 자바 표준 스펙이다 @Autowired와 같은 역할을 한다
+## id
+> 하나의 빈은 여러 개의 이름을 가질수 있다, 특수문자가 포함된 빈 식별자도 가능하다
+## hi
+> id테스트를 java code로 구현한것
+> @Named는 자바 표준 스펙(JSR-330)으로 빈의 이름을 지정, @Bean은 스프링 전용 애노테이션이다
