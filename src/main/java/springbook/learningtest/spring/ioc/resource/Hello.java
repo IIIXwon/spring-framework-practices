@@ -1,9 +1,15 @@
-package springbook.learningtest.spring.ioc.bean;
+package springbook.learningtest.spring.ioc.resource;
 
-import org.jspecify.annotations.Nullable;
+import jakarta.annotation.Resource;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class Hello {
+    @Value("Spring")
     private String name;
+
+    @Resource
     private Printer printer;
 
     public Hello() {
@@ -26,15 +32,11 @@ public class Hello {
         printer.print(sayHello());
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+//    public void setName(String name) {
+//        this.name = name;
+//    }
 
-    public void setPrinter(Printer printer) {
-        this.printer = printer;
-    }
-
-    public @Nullable Printer getPrinter() {
-        return printer;
-    }
+//    public void setPrinter(StringPrinter printer) {
+//        this.printer = printer;
+//    }
 }

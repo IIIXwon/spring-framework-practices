@@ -1,9 +1,10 @@
-package springbook.learningtest.spring.ioc.bean;
+package springbook.learningtest.spring.ioc.annotation;
 
-import org.jspecify.annotations.Nullable;
+import jakarta.annotation.Resource;
 
 public class Hello {
     private String name;
+
     private Printer printer;
 
     public Hello() {
@@ -29,12 +30,8 @@ public class Hello {
     public void setName(String name) {
         this.name = name;
     }
-
-    public void setPrinter(Printer printer) {
+    @Resource(name = "printer")
+    public void setPrinter(StringPrinter printer) {
         this.printer = printer;
-    }
-
-    public @Nullable Printer getPrinter() {
-        return printer;
     }
 }
