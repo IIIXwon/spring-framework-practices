@@ -1,0 +1,42 @@
+# ==========================================
+# Gradle & Build Output (빌드 결과물 및 캐시)
+# ==========================================
+.gradle/
+build/
+out/
+bin/
+
+# Gradle 래퍼 실행 파일은 버전 관리에 포함되어야 하므로 제외
+!gradle/wrapper/gradle-wrapper.jar
+
+# ==========================================
+# IntelliJ IDEA (인텔리제이 설정 파일)
+# ==========================================
+.idea/
+*.iws
+*.iml
+*.ipr
+
+# 개발자 개인 선호도가 반영되는 로컬 설정 파일들 (Git 제외 선호)
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/gradle.xml
+.idea/dictionaries
+.idea/shelf/
+
+# ==========================================
+# Eclipse & VS Code
+# ==========================================
+.classpath
+.project
+.settings/
+.factorypath
+.springBeans
+.sts4-cache
+.vscode/
+
+# ==========================================
+# Operating System (OS 시스템 파일)
+# ==========================================
+.DS_Store
+Thumbs.db
