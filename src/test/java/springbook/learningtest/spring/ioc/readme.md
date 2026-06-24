@@ -185,4 +185,5 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 > * 빈 스코프의 종류는 싱글톤, 프로토타임, 요청, 세션, 애플리케이션, 웹소켓이 있다
 > * 애플리케이션, 싱글톤은 한개만 생성되고 나머지 스코프는 매번 생성된다, 하지만 프로토타입을 제외한 나머지 스코프는 스프링 컨테이너에서 생명주기를 관리한다
 > * 스코프 빈을 사용할 떄는 프로토타입 빈과 같은 Provider, ObjectFactory같은 DL(dependency lookup)방식을 사용해야 한다
+> * 프록시 빈 클래스를 직접 DI 하는 경우 : ScopedProxyMode.TARGET_CLASS, 클라이언트에서 인스턴스로 DI 받는 경우 : ScopedProxyMode.INTERFACES 
 > * https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html#beans-factory-scopes-other-injection
