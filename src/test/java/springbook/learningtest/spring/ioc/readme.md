@@ -104,3 +104,21 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 }
 
 ```
+## atResource
+> xml설정 대신 @Resource 애노테이션의 빈 의존관계를 설정할 수 있다
+> 1. <context:annotation-config />
+> > 애노테이션 의존관계 정보를 읽어서 메타정보를 추가해주는 기능을 가진 빈 후처리기 전용 태그 사용
+> 2. <context:component-scan />
+> > 빈 스캐닝을 통한 빈 등록방법
+> 3. AnnotationConfigApplicationContext AnnotationConfigWebApplicationContext
+> > 빈 스캐너와 애노테이션 의존관계 정보를 읽는 후처리기를 내장한 애플리케이션 컨텍스트 사용
+## atAutowiredCollection
+> @Autowired는 스프링 전용 의존관계 설정 애노테이션, 타입에 의한 자동 와이어링 방식으로 동작 
+> 같은 타입의 빈이 여러개 있을때 컬렉션이나, 배열로 주입 받을수 있다
+> 충돌을 피하려는 목적으로 사용해선 안 되고, 의도적으로 여러개 빈을 등록하고 이를 모두 참조하거나, 선별적으로 찾을때 사용하는 것이 좋다
+## atQualifier
+> 같은 타입의 빈이 여러개 등록됬을때, 타입에 의한 자동와이어링을 시도하면 에러가 발생한다
+> @Qualifier를 사용해서 자동와이어링 대상을 제한할 수 있다
+> 먼저 한정자 이름을 확인 하고 매칭되지 않는다면, 빈 이름을 확인한다
+## atInject
+> @Inject는 JSR-330에 정의된 자바 표준 스펙이다 @Autowired와 같은 역할을 한다

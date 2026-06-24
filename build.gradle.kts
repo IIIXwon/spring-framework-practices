@@ -24,6 +24,8 @@ dependencies {
 
     implementation("org.aspectj:aspectjweaver:1.9.22")
 
+    implementation("jakarta.inject:jakarta.inject-api:2.0.1")
+    implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
     compileOnly("jakarta.servlet:jakarta.servlet-api:6.1.0")
 
     testImplementation(platform("org.junit:junit-bom:6.1.0"))
