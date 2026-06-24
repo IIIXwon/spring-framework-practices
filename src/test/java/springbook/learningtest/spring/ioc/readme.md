@@ -168,4 +168,21 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 > * ApplicationContext 객체를 생성 하면 자동으로 등록되는 빈들이 있다, ApplicationContext 구현체에 빈 후처리기 내장 유무에 따라 등록되는 빈의 목록이 다르다, Resolvable Dependencies, 컨테이너 내부 환경 싱글톤 객체들은 공통으로 생성된다
 > * Resolvable Dependencies은 빈 이름을 가지고 있지 않아서 ac.getBean("빈 이름")으로 사용할수 없지만, 스프링 컨테이너에서 DI를 받아 사용할 수 있다
 > * SystemProperties는 JVM이 가지는 속성, SystemEnvironment는 OS의 환경변수를 가리킨다
-> * SystemEnvironment의 타입이 Map<String, Object>이 아니라, Map인 이유 : 하위 호환성과 컨테이너에 등록된 특정 타입의 빈을 컬렉션에 담아 달라는 다중 빈 주입 메커니즘 떄문에 관례적으로 Map을 선언한다 
+> * SystemEnvironment의 타입이 Map<String, Object>이 아니라, Map인 이유 : 하위 호환성과 컨테이너에 등록된 특정 타입의 빈을 컬렉션에 담아 달라는 다중 빈 주입 메커니즘 떄문에 관례적으로 Map을 선언한다
+
+## singletonScope
+> * 스프링 컨테이너는 기본적으로 빈을 싱글톤으로 관리한다
+## prototypeScope
+> * 빈 등록시 @Scope의 scopeName 속성을 `prototype`으로 지정하면 컨테이너는 해당 빈을 프로토타입으로 관리하게 되고, 클라이언트에서 요청시 해당 빈을 매번 새로운 객체로 만들어서 반환한다, 반환된 빈은 더이상 컨테이너가 관리하지 않는다 
+## objectFactory
+> * 클라이언트와 애플리케이션 중간에서 컨텍스트의 getBean()을 호출하는 역할
+> * ObjectFactory는 타입이 여러개가 있을수 있으므로 타입보다 @Resource를 사용해서 빈 이름으로 주입하는 것이 낫다
+## serviceLocatorFactoryBean
+> * 스프링 전용 인터페이스(ObjectFactory)에 종속되지 않고 커스텀 인터페이스 DL용도로 사용할 수 있게 한다
+## providerTest
+> * Provider는 ObjectFactory와 유사하지만 ObjectFactoryCreatingFactoryBean를 등록하지 않아도 Provider 인터페이스를 DI되도록 지정만 하면 스프링이 구현체를 생성해서 주입해준다
+## requestScope
+> * 빈 스코프의 종류는 싱글톤, 프로토타임, 요청, 세션, 애플리케이션, 웹소켓이 있다
+> * 애플리케이션, 싱글톤은 한개만 생성되고 나머지 스코프는 매번 생성된다, 하지만 프로토타입을 제외한 나머지 스코프는 스프링 컨테이너에서 생명주기를 관리한다
+> * 스코프 빈을 사용할 떄는 프로토타입 빈과 같은 Provider, ObjectFactory같은 DL(dependency lookup)방식을 사용해야 한다
+> * https://docs.spring.io/spring-framework/reference/core/beans/factory-scopes.html#beans-factory-scopes-other-injection
