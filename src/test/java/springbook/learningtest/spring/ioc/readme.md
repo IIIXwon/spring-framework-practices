@@ -144,3 +144,22 @@ public class MyWebAppInitializer extends AbstractAnnotationConfigDispatcherServl
 > * **💡 이 테스트 코드가 에러 없이 통과(싱글톤 유지)한 이유**
     >   * 이 테스트 코드 내부의 `hello()`, `hello2()` 메서드는 싱글톤이 깨지는 `this.printer()` 메서드를 직접 호출하는 악수를 두지 않았다.
 >   * 대신, 스프링이 생성 시점에 `@Autowired`로 딱 한 번 클래스 필드에 주입해 준 `this.printer` 멤버 변수를 수평적으로 안전하게 공유(참조)했기 때문에 싱글톤이 유지되어 통과한 것이다.
+
+## valueInjection
+> * 외부에서 값을 주입하는 두 가지 주요 용도
+> * **환경에 따라 매번 달라지는 값**: 데이터베이스 연결 정보(DataSource의 url, username, password, DriverClass 등)가 대표적이다.
+> * **클래스 필드의 동적 초기화**: 기본 초기값을 가지고 있으나 특정 상황(테스트 환경, 이벤트 기간 등)에서 다른 값으로 변경해야 할 때 유용하다.
+> * 설정이 바뀌더라도 소스 코드를 컴파일 하지 않아도 된다
+> * `@Value("${...}")`를 처리하기 위해 `PropertySourcesPlaceholderConfigurer`와 같은 빈 후처리기 등록이 필요하다.
+## importResource
+> * 자바 코드 기반 설정(`@Configuration`)과 기존의 XML 설정 방식을 혼용하여 유연하게 사용할 수 있다.
+> * 클래스 상단에 `@ImportResource("/경로/설정.xml")` 형태로 지정하여 XML에 등록된 빈을 자바 컨텍스트로 가져온다.
+## propertyEditor
+> * XML 설정과 애노테이션의 `@Value` 속성에 들어가는 값은 본질적으로 모두 **문자열**로 작성된다.
+> * 프로퍼티의 타입이 문자열이 아닐 경우, 스프링은 내부적으로 `PropertyEditor`나 `ConversionService`를 통해 타입 변환을 시도한다.
+> * 기본 타입(Primitive, Charset, File, 배열 등)은 스프링이 제공하는 기본 에디터에 의해 자동으로 형변환된다.
+> * 만약 복잡한 커스텀 타입(오브젝트)으로 변환해야 한다면 개발자가 직접 인터페이스를 구현하여 등록해 주어야 한다.
+## collectionInject
+> * `List`, `Set`, `Map`, `Properties` 등의 컬렉션 타입도 외부(XML 등)에서 통째로 값을 주입받을 수 있다.
+> * 컬렉션 내부에 여러 가지 타입의 오브젝트가 무분별하게 혼용되면 런타임에 타입 변환 에러가 발생할 수 있다.
+> * 안정성을 위해 가능한 한 **타입 가이드라인(Generic)**를 명시하여 스프링 컨테이너가 적합한 타입 변환기를 올바르게 적용할 수 있도록 설계해야 한다.
