@@ -21,8 +21,10 @@ dependencies {
     testImplementation("org.springframework:spring-test:${springVersion}")
     implementation("org.springframework:spring-web:${springVersion}")
     implementation("org.springframework:spring-webmvc:${springVersion}")
+    implementation("org.springframework:spring-jdbc:${springVersion}")
 
     implementation("org.aspectj:aspectjweaver:1.9.22")
+    implementation("org.postgresql:postgresql:42.7.3")
 
     implementation("jakarta.inject:jakarta.inject-api:2.0.1")
     implementation("jakarta.annotation:jakarta.annotation-api:3.0.0")
