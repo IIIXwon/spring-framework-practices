@@ -23,6 +23,7 @@ dependencies {
     implementation("org.springframework:spring-webmvc:${springVersion}")
     implementation("org.springframework:spring-jdbc:${springVersion}")
     implementation("org.springframework:spring-orm:${springVersion}")
+    implementation("org.springframework:spring-aspects:${springVersion}")
 
     implementation("org.aspectj:aspectjweaver:1.9.22")
     implementation("org.postgresql:postgresql:42.7.3")
